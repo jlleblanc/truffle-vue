@@ -5,6 +5,7 @@
     <ul v-if="type == 'array'">
       <li v-for="listItem in value">{{listItem}}</li>
     </ul>
+    <a :href="value" v-if="type == 'link'">{{value}}</a>
     <span v-if="type == 'default'">{{value}}</span>
   </span>
 </template>
