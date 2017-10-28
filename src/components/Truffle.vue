@@ -2,18 +2,18 @@
   <div class="truffle">
     <a :href="anchor"></a>
     <div class="date">{{date()}}</div>
-    <dl>
-      <template class="truffle-field" v-for="(value, key) in truffle" v-if="key != 'id' && key != 'hostId' && key != 'timestamp'">
-        <dt>{{key}}</dt>
-        <dd>{{value}}</dd>
-      </template>
-    </dl>
+    <template v-for="(value, key) in truffle" v-if="key != 'id' && key != 'hostId' && key != 'timestamp'">
+      <field v-bind:value="value" v-bind:label="key"></field>
+    </template>
   </div>
 </template>
 
 <script>
+import Field from '@/components/Field'
+
 export default {
   name: 'Truffle',
+  components: { Field },
   props: [ 'truffle' ],
   data () {
     return {
