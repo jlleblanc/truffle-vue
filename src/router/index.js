@@ -5,6 +5,9 @@ import Truffle from '@/components/Truffle'
 
 Vue.use(Router)
 
+// TODO: see if there's a way we can do the JSON lookup once here, then pass it down to
+// through the router
+
 export default new Router({
   routes: [
     {
@@ -15,7 +18,7 @@ export default new Router({
     {
       path: '/:truffleId',
       name: 'Truffle',
-      component: Truffle
+      component: Truffle // TODO: need to create a single view so we can extract the truffleId
     }
   ]
 })
