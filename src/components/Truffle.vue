@@ -1,5 +1,5 @@
 <template>
-  <div class="truffle m-3 p-3 border border-info rounded">
+  <div class="truffle m-3 p-3 border rounded">
     <a :href="anchor"></a>
     <div class="date">{{date()}}</div>
     <template v-for="(value, key) in truffle" v-if="!skippedFields.includes(key)">
