@@ -8,7 +8,7 @@
     <template v-if="hasTags">
       <h4>Tags</h4>
       <ul>
-        <li v-for="(value, key) in tags">{{key}}</li>
+        <li v-for="(tagValue, tagKey) in tags">{{tagKey}}</li>
       </ul>
     </template>
   </div>
@@ -34,12 +34,12 @@ export default {
     }
   },
   mounted () {
-    for (var key in this.truffle) {
-      if (this.truffle.hasOwnProperty(key)) {
-        var value = this.truffle[key]
-        if (typeof (value) === 'boolean') {
-          this.skippedFields.push(key)
-          this.tags[key] = value
+    for (var fieldKey in this.truffle) {
+      if (this.truffle.hasOwnProperty(fieldKey)) {
+        var fieldValue = this.truffle[fieldKey]
+        if (typeof (fieldValue) === 'boolean') {
+          this.skippedFields.push(fieldKey)
+          this.tags[fieldKey] = fieldValue
           this.hasTags = true
         }
       }
