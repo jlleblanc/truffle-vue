@@ -1,7 +1,7 @@
 <template>
   <span>
     <h4>{{label}}</h4>
-    <blockquote v-if="fieldType == 'comment'">{{value}}</blockquote>
+    <blockquote v-if="fieldType == 'comment' || fieldType == 'recipe'">{{value}}</blockquote>
     <ul v-if="fieldType == 'array'">
       <li v-for="listItem in value">{{listItem}}</li>
     </ul>
@@ -22,6 +22,7 @@ export default {
   mounted () {
     var knownTypes = [
       'comment',
+      'recipe',
       'link'
     ]
 
