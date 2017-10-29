@@ -18,7 +18,7 @@ export default {
     }
   },
   mounted () {
-    fetch('/static/feed.json')
+    fetch('http://truffle.jlleblanc.com/feed.json')
       .then(r => r.json())
       .then(json => {
         this.truffles = json
