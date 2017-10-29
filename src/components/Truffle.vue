@@ -1,15 +1,15 @@
 <template>
-  <div class="truffle">
+  <div class="truffle m-3 p-3 border border-info rounded">
     <a :href="anchor"></a>
     <div class="date">{{date()}}</div>
     <template v-for="(value, key) in truffle" v-if="!skippedFields.includes(key)">
       <field v-bind:value="value" v-bind:label="key"></field>
     </template>
     <template v-if="hasTags">
-      <h4>Tags</h4>
-      <ul>
-        <li v-for="(tagValue, tagKey) in tags">{{tagKey}}</li>
-      </ul>
+      <h5>tags</h5>
+      <p>
+        <span v-for="(tagValue, tagKey) in tags" class="badge badge-pill badge-success mr-1">{{tagKey}}</span>
+      </p>
     </template>
   </div>
 </template>

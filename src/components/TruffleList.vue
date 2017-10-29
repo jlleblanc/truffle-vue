@@ -1,5 +1,5 @@
 <template>
-  <div id="truffle-list">
+  <div id="truffle-list" class="container-fluid">
     <template v-for="truffle in truffles">
       <truffle v-if="!truffle.hostId" v-bind:truffle="truffle"></truffle>
     </template>
