@@ -6,7 +6,7 @@
       <li v-for="listItem in value">{{listItem}}</li>
     </ul>
     <a :href="value" v-if="fieldType == 'link'">{{value}}</a>
-    <audio v-if="fieldType == 'podcastEpisode'" controls="controls">
+    <audio v-if="fieldType == 'podcastEpisode'" controls="controls" preload="none">
       <source :src="value"></source>
     </audio>
     <a :href="'https://www.biblegateway.com/passage/?version=NRSV&search=' + value" v-if="fieldType == 'biblePassage'">{{value}}</a>
@@ -32,9 +32,9 @@ export default {
       'link'
     ]
 
-    if (knownTypes.includes(this.label)) {
+    if (knownTypes.includes(this.label) === true) {
       this.fieldType = this.label
-    } else if (Array.isArray(this.value)) {
+    } else if (Array.isArray(this.value) === true) {
       this.fieldType = 'array'
     } else {
       this.fieldType = 'default'
