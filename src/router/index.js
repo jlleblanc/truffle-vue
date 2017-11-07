@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import TruffleList from '@/components/TruffleList'
-import Truffle from '@/components/Truffle'
+import SingleTruffle from '@/components/SingleTruffle'
 
 Vue.use(Router)
 
@@ -18,7 +18,8 @@ export default new Router({
     {
       path: '/:truffleId',
       name: 'Truffle',
-      component: Truffle // TODO: need to create a single view so we can extract the truffleId
+      component: SingleTruffle, // TODO: need to create a single view so we can extract the truffleId
+      props: true
     }
   ]
 })
