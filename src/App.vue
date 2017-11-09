@@ -1,12 +1,24 @@
 <template>
   <div id="app">
-    <router-view/>
+    <router-view v-bind:truffles="truffles" />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'app'
+  name: 'app',
+  data () {
+    return {
+      truffles: []
+    }
+  },
+  mounted () {
+    fetch('http://truffle.jlleblanc.com/feed.json')
+      .then(r => r.json())
+      .then(json => {
+        this.truffles = json
+      })
+  }
 }
 </script>
 
