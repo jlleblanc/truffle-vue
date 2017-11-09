@@ -18,7 +18,7 @@ export default new Router({
     {
       path: '/:truffleId',
       name: 'Truffle',
-      component: SingleTruffle, // TODO: need to create a single view so we can extract the truffleId
+      component: SingleTruffle,
       props: true
     }
   ]
