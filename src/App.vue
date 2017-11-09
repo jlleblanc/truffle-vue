@@ -5,6 +5,8 @@
 </template>
 
 <script>
+// import Truffles from '@/lib/truffles'
+
 export default {
   name: 'app',
   data () {
