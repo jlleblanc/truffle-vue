@@ -1,7 +1,6 @@
 <template>
   <div class="truffle m-3 p-3 border rounded">
-    <a :href="anchor"></a>
-    <div class="date">{{date()}}</div>
+    <div class="date"><router-link :to="{ name: 'Truffle', params: { truffleId: truffleId } }">{{date()}}</router-link></div>
     <template v-for="(value, key) in truffle" v-if="!skippedFields.includes(key)">
       <field v-bind:value="value" v-bind:label="key"></field>
     </template>
@@ -23,7 +22,7 @@ export default {
   props: [ 'truffle' ],
   data () {
     return {
-      anchor: '#' + this.truffle.id,
+      truffleId: this.truffle.id,
       skippedFields: ['id', 'hostId', 'timestamp'],
       tags: {},
       hasTags: false,
