@@ -5,13 +5,20 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import Truffles from './lib/truffles'
 
-Vue.config.productionTip = false
+fetch('http://truffle.jlleblanc.com/feed.json')
+.then(r => r.json())
+.then(json => {
+  var truffles = new Truffles(json)
+  Vue.config.productionTip = false
 
-/* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  router,
-  template: '<App/>',
-  components: { App }
+  /* eslint-disable no-new */
+  new Vue({
+    el: '#app',
+    router,
+    template: '<App v-bind:truffles="truffles"/>',
+    components: { App },
+    data: { truffles: truffles.truffles }
+  })
 })

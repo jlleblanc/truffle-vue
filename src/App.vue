@@ -9,18 +9,7 @@
 
 export default {
   name: 'app',
-  data () {
-    return {
-      truffles: []
-    }
-  },
-  mounted () {
-    fetch('http://truffle.jlleblanc.com/feed.json')
-      .then(r => r.json())
-      .then(json => {
-        this.truffles = json
-      })
-  }
+  props: [ 'truffles' ]
 }
 </script>
 

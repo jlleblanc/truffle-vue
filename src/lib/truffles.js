@@ -6,9 +6,11 @@
 // provide method for getting all host truffles
 // provide method for getting a host's guest truffles
 
+// should probably add another class for pre-parsing truffle data
+
 export default class {
-  constructor(url) {
-    this.url = url
+  constructor (truffles) {
+    this.truffles = truffles
     this.keyedTruffles = {}
     this.hostKeys = []
   }
@@ -17,11 +19,11 @@ export default class {
     // returns an array of host truffles
   }
 
-  getById(id) {
+  getById (id) {
     // returns a single truffle for the given id
   }
 
-  getGuestsById(id) {
+  getGuestsById (id) {
     // returns an array of guest truffles for the given id
   }
 }
