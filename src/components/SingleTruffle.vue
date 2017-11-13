@@ -1,5 +1,10 @@
 <template>
-  <truffle v-bind:truffle="truffle" v-if="truffle"></truffle>
+  <div>
+    <truffle v-bind:truffle="truffle" v-if="truffle"></truffle>
+    <div class="container-fluid">
+      <router-link :to="{ name: 'List' }">🔙 return to list</router-link>
+    </div>
+  </div>
 </template>
 
 <script>
