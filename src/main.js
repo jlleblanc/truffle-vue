@@ -13,12 +13,14 @@ fetch('http://truffle.jlleblanc.com/feed.json')
   var truffles = new Truffles(json)
   Vue.config.productionTip = false
 
+  truffles.getHostTruffleKeys()
+
   /* eslint-disable no-new */
   new Vue({
     el: '#app',
     router,
     template: '<App v-bind:truffles="truffles"/>',
     components: { App },
-    data: { truffles: truffles.truffles }
+    data: { truffles: truffles.getRawTruffles() }
   })
 })

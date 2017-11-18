@@ -1,29 +1,62 @@
-// fetch the truffles
+var rawTruffles = null
+var keyedTruffles = {}
+var hostKeys = []
+var guestKeysForHosts = {}
 
-// key the truffles
-// map host-guest truffles
+function keyTruffles () {
+  rawTruffles.forEach(function (element) {
+    keyedTruffles[element.hostId] = element
 
-// provide method for getting all host truffles
-// provide method for getting a host's guest truffles
+    if (typeof element.hostId === 'undefined') {
+      hostKeys.push(element.id)
+    } else {
+      if (typeof guestKeysForHosts[element.hostId] === 'undefined') {
+        guestKeysForHosts[element.hostId] = []
+      }
 
-// should probably add another class for pre-parsing truffle data
+      guestKeysForHosts[element.hostId].push(element.id)
+    }
+  })
+}
 
 export default class {
   constructor (truffles) {
-    this.truffles = truffles
-    this.keyedTruffles = {}
-    this.hostKeys = []
+    rawTruffles = truffles
   }
 
-  getHosts () {
-    // returns an array of host truffles
+  parseIfNeeded () {
+    if (hostKeys.length === 0) {
+      keyTruffles()
+    }
+  }
+
+  getRawTruffles () {
+    return rawTruffles
   }
 
   getById (id) {
-    // returns a single truffle for the given id
+    this.parseIfNeeded()
+
+    if (typeof keyedTruffles[id] !== 'undefined') {
+      return keyedTruffles[id]
+    }
+
+    return false
   }
 
-  getGuestsById (id) {
-    // returns an array of guest truffles for the given id
+  getHostTruffleKeys () {
+    this.parseIfNeeded()
+
+    return hostKeys
+  }
+
+  getGuestKeysByHostId (id) {
+    this.parseIfNeeded()
+
+    if (typeof guestKeysForHosts[id] === 'undefined') {
+      return false
+    } else {
+      return guestKeysForHosts[id]
+    }
   }
 }
