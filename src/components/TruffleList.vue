@@ -1,7 +1,8 @@
 <template>
   <div id="truffle-list" class="container-fluid">
-    <template v-for="truffle in truffles">
-      <truffle v-if="!truffle.hostId" v-bind:truffle="truffle"></truffle>
+    <template v-for="truffleId in truffles.getHostTruffleKeys()">
+      <!-- <truffle v-bind:truffle="truffles.getById(truffleId)" v-bind:guests="truffles.getGuestsByHostId(truffleId)"></truffle> -->
+      <truffle v-bind="{ truffle: truffles.getById(truffleId), guests: truffles.getGuestsByHostId(truffleId) }"></truffle>
     </template>
   </div>
 </template>

@@ -10,10 +10,7 @@ import Truffles from './lib/truffles'
 fetch('http://truffle.jlleblanc.com/feed.json')
 .then(r => r.json())
 .then(json => {
-  var truffles = new Truffles(json)
   Vue.config.productionTip = false
-
-  truffles.getHostTruffleKeys()
 
   /* eslint-disable no-new */
   new Vue({
@@ -21,6 +18,6 @@ fetch('http://truffle.jlleblanc.com/feed.json')
     router,
     template: '<App v-bind:truffles="truffles"/>',
     components: { App },
-    data: { truffles: truffles.getRawTruffles() }
+    data: { truffles: new Truffles(json) }
   })
 })

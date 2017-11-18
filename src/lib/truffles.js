@@ -5,7 +5,7 @@ var guestKeysForHosts = {}
 
 function keyTruffles () {
   rawTruffles.forEach(function (element) {
-    keyedTruffles[element.hostId] = element
+    keyedTruffles[element.id] = element
 
     if (typeof element.hostId === 'undefined') {
       hostKeys.push(element.id)
@@ -50,13 +50,15 @@ export default class {
     return hostKeys
   }
 
-  getGuestKeysByHostId (id) {
+  getGuestsByHostId (id) {
     this.parseIfNeeded()
 
     if (typeof guestKeysForHosts[id] === 'undefined') {
       return false
     } else {
-      return guestKeysForHosts[id]
+      return guestKeysForHosts[id].map(function (guestKey) {
+        return this.getById(guestKey)
+      }, this)
     }
   }
 }

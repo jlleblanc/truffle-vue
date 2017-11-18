@@ -10,6 +10,7 @@
         <span v-for="(tagValue, tagKey) in tags" class="badge badge-pill badge-success mr-1">{{tagKey}}</span>
       </p>
     </template>
+    <!-- <div v-if="guests !== false">{{ guests.length }} guests</div> -->
   </div>
 </template>
 
@@ -19,7 +20,7 @@ import Field from '@/components/Field'
 export default {
   name: 'Truffle',
   components: { Field },
-  props: [ 'truffle' ],
+  props: [ 'truffle', 'guests' ],
   data () {
     return {
       truffleId: this.truffle.id,
