@@ -1,22 +1,22 @@
-var rawTruffles = null
-var keyedTruffles = {}
-var hostKeys = []
-var guestKeysForHosts = {}
+let rawTruffles = null
+let keyedTruffles = {}
+let hostKeys = []
+let guestKeysForHosts = {}
 
 function keyTruffles () {
-  rawTruffles.forEach(function (element) {
+  for (var element of rawTruffles) {
     keyedTruffles[element.id] = element
 
-    if (typeof element.hostId === 'undefined') {
+    if (element.hostId === undefined) {
       hostKeys.push(element.id)
     } else {
-      if (typeof guestKeysForHosts[element.hostId] === 'undefined') {
+      if (guestKeysForHosts[element.hostId] === undefined) {
         guestKeysForHosts[element.hostId] = []
       }
 
       guestKeysForHosts[element.hostId].push(element.id)
     }
-  })
+  }
 }
 
 export default class {
@@ -37,7 +37,7 @@ export default class {
   getById (id) {
     this.parseIfNeeded()
 
-    if (typeof keyedTruffles[id] !== 'undefined') {
+    if (keyedTruffles[id] !== undefined) {
       return keyedTruffles[id]
     }
 
@@ -53,10 +53,10 @@ export default class {
   getGuestsByHostId (id) {
     this.parseIfNeeded()
 
-    if (typeof guestKeysForHosts[id] === 'undefined') {
+    if (guestKeysForHosts[id] === undefined) {
       return false
     } else {
-      return guestKeysForHosts[id].map(function (guestKey) {
+      return guestKeysForHosts[id].map(guestKey => {
         return this.getById(guestKey)
       }, this)
     }
