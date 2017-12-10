@@ -2,7 +2,7 @@
   <div>
     <truffle v-bind="{ truffle: truffle, guests: guests }" v-if="truffle"></truffle>
     <div class="m-3 p-3" v-if="guests !== false">
-      <h5>guests</h5>
+      <h5>Guests</h5>
 
       <truffle v-for="guestTruffle in guests" v-bind:truffle="guestTruffle" :key="guestTruffle.id"></truffle>
     </div>

@@ -5,7 +5,7 @@
       <field v-bind:value="value" v-bind:label="key"></field>
     </template>
     <template v-if="hasTags">
-      <h5>tags</h5>
+      <h5>Tags</h5>
       <p>
         <span v-for="(tagValue, tagKey) in tags" class="badge badge-pill badge-success mr-1">{{tagKey}}</span>
       </p>
